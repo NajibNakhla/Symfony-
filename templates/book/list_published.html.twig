@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Livres Publiés{% endblock %}
+
+{% block stylesheets %}
+    {# Include the Bootstrap CSS #}
+    <link rel="stylesheet" href="{{ asset('css/table-styles.css') }}">
+</style>
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1>Liste des Livres Publiés</h1>
+
+        <p>Nombre de livres publiés : {{ publishedCount }}</p>
+        <p>Nombre de livres non publiés : {{ unpublishedCount }}</p>
+        <a href="{{ path('delete_authors') }}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete authors with zero books?')">Delete Authors with 0 Books</a>
+
+        {% if publishedCount > 0 %}
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Titre</th>
+                        <th>Catégorie</th>
+                        <th>Date de Publication</th>
+                        <th>Nom de l'Auteur</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for bookData in publishedBooksData %}
+                        <tr>
+                            <td>{{ bookData.title }}</td>
+                            <td>{{ bookData.category }}</td>
+                            <td>{{ bookData.publicationDate|date('Y-m-d') }}</td>
+                            <td>{{ bookData.authorName }}</td>
+                            <td>
+                                <a href="{{ path('edit_book', {'ref': bookData.ref}) }}" class="btn btn-warning">Edit</a>
+                                <a href="{{ path('delete_book', {'ref': bookData.ref}) }}" onclick="return confirm('Are you sure you want to delete this book?')" class="btn btn-danger">Delete</a>
+                                <a href="{{ path('show_book', {'ref': bookData.ref}) }}" class="btn btn-info">Show</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No Books found</p>
+        {% endif %}
+    </div>
+{% endblock %}

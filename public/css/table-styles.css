@@ -1,0 +1,16 @@
+/* public/css/table-styles.css */
+.table-bordered {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.table-bordered th, .table-bordered td {
+    border: 1px solid #000; /* Couleur et largeur de la bordure */
+    padding: 8px; /* Marge intérieure pour l'espacement du contenu */
+    text-align: left; /* Alignement du texte dans les cellules */
+}
+
+/* Style d'arrière-plan en survol de la ligne */
+.table-bordered tr:hover {
+    background-color: #f5f5f5; /* Couleur d'arrière-plan au survol */
+}

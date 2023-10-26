@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Ajouter un Appareil</h1>
+    {{ form_start(form) }}
+
+    {{ form_row(form.Code) }}
+    
+    {{ form_row(form.Category) }}
+
+    {{ form_row(form.EconomyRating) }}
+
+    {{ form_row(form.Manufacture) }}
+
+    {{ form_row(form.Price) }}
+
+    {{ form_row(form.FabricationDate) }}
+
+    {{ form_row(form.Stock) }}
+    
+    <button type="submit">Ajouter</button>
+    
+    {{ form_end(form) }}
+    
+    <a href="{{ path('app_list') }}">Retour à la liste des appareils</a>
+{% endblock %}

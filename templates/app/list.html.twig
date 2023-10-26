@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Liste des Appareils</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Catégorie</th>
+                <th>Économie</th>
+                <th>Fabricant</th>
+                <th>Prix</th>
+                <th>Date de Fabrication</th>
+                <th>Stock</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for appliance in appliances %}
+                <tr>
+                    <td>{{ appliance.Code }}</td>
+                    <td>{{ appliance.Category }}</td>
+                    <td>{{ appliance.EconomyRating }}</td>
+                    <td>{{ appliance.Manufacture }}</td>
+                    <td>{{ appliance.Price }}</td>
+                    <td>{{ appliance.FabricationDate|date('Y-m-d') }}</td>
+                    <td>{{ appliance.Stock }}</td>
+                    <td>
+                        <a href="{{ path('appliance_add') }}">Ajouter</a> |
+                        <a href="">Modifier</a> |
+                        <a href="">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

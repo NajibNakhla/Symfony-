@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ book.title }}
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1 class="display-4">{{ book.title }}</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <p class="lead">Ref: {{ book.ref }}</p>
+                <p class="lead">Category: {{ book.category }}</p>
+                <p class="lead">Publication Date: {{ book.publicationDate|date('Y-m-d') }}</p>
+                <p class="lead">Author: {{ book.author.username }}</p>
+            </div>
+            <div class="col-md-6">
+                <!-- You can display additional book details here -->
+            </div>
+        </div>
+    </div>
+{% endblock %}
